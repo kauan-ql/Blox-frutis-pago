@@ -113,14 +113,11 @@ local function createDropdown(text)
 end
 
 -- ================= OPÇÕES =================
-createDropdown("Teleports")
-createToggle("Teleport Player")
+createDropdown("Kill all")
+createToggle("Pegar alfo coisas")
 createToggle("ESP Player")
 createToggle("ESP Line")
 createToggle("ESP Box")
-createToggle("Auto Farm Trash")
-createToggle("Auto Farm Fish")
-createToggle("Auto Farm Samu")
 createToggle("God Mode (UI)")
 createToggle("Invisible (UI)")
 createToggle("Speed Boost (UI)")
