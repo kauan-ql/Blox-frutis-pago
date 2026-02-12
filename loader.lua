@@ -1,48 +1,60 @@
 --=====================================
--- SINTONIA HUB (UI ONLY)
--- Painel próprio | Mobile | Stream Safe
+-- GHOST HUB - UI ONLY
+-- Painel próprio | Mobile | GitHub
 --=====================================
 
 local Players = game:GetService("Players")
 local UIS = game:GetService("UserInputService")
 local player = Players.LocalPlayer
 
--- Remove GUI antiga
-if player.PlayerGui:FindFirstChild("SintoniaHub") then
-    player.PlayerGui.SintoniaHub:Destroy()
+-- Remove antigo
+if player.PlayerGui:FindFirstChild("GhostHub") then
+    player.PlayerGui.GhostHub:Destroy()
 end
 
 -- ScreenGui
-local gui = Instance.new("ScreenGui")
-gui.Name = "SintoniaHub"
+local gui = Instance.new("ScreenGui", player.PlayerGui)
+gui.Name = "GhostHub"
 gui.ResetOnSpawn = false
-gui.Parent = player.PlayerGui
 
--- Main
+-- ================= BOTÃO 👻 =================
+local ghostBtn = Instance.new("TextButton", gui)
+ghostBtn.Size = UDim2.new(0,50,0,50)
+ghostBtn.Position = UDim2.new(0,15,0.5,-25)
+ghostBtn.Text = "👻"
+ghostBtn.TextSize = 26
+ghostBtn.Font = Enum.Font.GothamBold
+ghostBtn.BackgroundColor3 = Color3.fromRGB(25,25,25)
+ghostBtn.TextColor3 = Color3.fromRGB(255,255,255)
+ghostBtn.BorderSizePixel = 0
+Instance.new("UICorner", ghostBtn).CornerRadius = UDim.new(1,0)
+
+-- ================= PAINEL =================
 local main = Instance.new("Frame", gui)
-main.Size = UDim2.new(0, 420, 0, 260)
-main.Position = UDim2.new(0.5, -210, 0.5, -130)
+main.Size = UDim2.new(0,450,0,280)
+main.Position = UDim2.new(0.5,-225,0.5,-140)
 main.BackgroundColor3 = Color3.fromRGB(20,20,20)
 main.BorderSizePixel = 0
+main.Visible = false
 Instance.new("UICorner", main).CornerRadius = UDim.new(0,14)
 
 -- Sidebar
 local side = Instance.new("Frame", main)
-side.Size = UDim2.new(0, 120, 1, 0)
+side.Size = UDim2.new(0,120,1,0)
 side.BackgroundColor3 = Color3.fromRGB(15,15,15)
 side.BorderSizePixel = 0
 Instance.new("UICorner", side).CornerRadius = UDim.new(0,14)
 
--- Title
+-- Título
 local title = Instance.new("TextLabel", side)
 title.Size = UDim2.new(1,0,0,45)
 title.BackgroundTransparency = 1
-title.Text = "SINTONIA RP"
+title.Text = "GHOST HUB"
 title.Font = Enum.Font.GothamBold
 title.TextSize = 14
 title.TextColor3 = Color3.fromRGB(220,220,220)
 
--- Hide Button (Stream Safe)
+-- Ocultar painel (stream)
 local hideBtn = Instance.new("TextButton", side)
 hideBtn.Size = UDim2.new(1,-20,0,32)
 hideBtn.Position = UDim2.new(0,10,1,-42)
@@ -54,7 +66,7 @@ hideBtn.BackgroundColor3 = Color3.fromRGB(35,35,35)
 hideBtn.BorderSizePixel = 0
 Instance.new("UICorner", hideBtn).CornerRadius = UDim.new(0,8)
 
--- Content
+-- Conteúdo
 local content = Instance.new("Frame", main)
 content.Position = UDim2.new(0,130,0,10)
 content.Size = UDim2.new(1,-140,1,-20)
@@ -63,11 +75,11 @@ content.BackgroundTransparency = 1
 local layout = Instance.new("UIListLayout", content)
 layout.Padding = UDim.new(0,8)
 
--- Função Toggle UI
+-- ================= FUNÇÕES =================
 local function createToggle(text)
     local btn = Instance.new("TextButton")
     btn.Size = UDim2.new(1,0,0,36)
-    btn.Text = text .. "  [OFF]"
+    btn.Text = text .. " [OFF]"
     btn.Font = Enum.Font.Gotham
     btn.TextSize = 13
     btn.TextColor3 = Color3.fromRGB(230,230,230)
@@ -78,20 +90,19 @@ local function createToggle(text)
     local state = false
     btn.MouseButton1Click:Connect(function()
         state = not state
-        btn.Text = text .. (state and "  [ON]" or "  [OFF]")
+        btn.Text = text .. (state and " [ON]" or " [OFF]")
         btn.BackgroundColor3 = state
-            and Color3.fromRGB(45,90,45)
+            and Color3.fromRGB(50,90,50)
             or Color3.fromRGB(30,30,30)
     end)
 
     btn.Parent = content
 end
 
--- Função Dropdown
-local function createDropdown(text, options)
+local function createDropdown(text)
     local btn = Instance.new("TextButton")
     btn.Size = UDim2.new(1,0,0,36)
-    btn.Text = text .. "  ▼"
+    btn.Text = text .. " ▼"
     btn.Font = Enum.Font.Gotham
     btn.TextSize = 13
     btn.TextColor3 = Color3.fromRGB(230,230,230)
@@ -99,27 +110,30 @@ local function createDropdown(text, options)
     btn.BorderSizePixel = 0
     Instance.new("UICorner", btn).CornerRadius = UDim.new(0,10)
     btn.Parent = content
-
-    btn.MouseButton1Click:Connect(function()
-        print("Dropdown:", text, options)
-    end)
 end
 
--- ===== Opções (IGUAL DA IMAGEM) =====
-createDropdown("Teleports", {"Cidade","Hospital","Praça"})
-createToggle("Teleport Player To Location")
+-- ================= OPÇÕES =================
+createDropdown("Teleports")
+createToggle("Teleport Player")
+createToggle("ESP Player")
+createToggle("ESP Line")
+createToggle("ESP Box")
 createToggle("Auto Farm Trash")
 createToggle("Auto Farm Fish")
 createToggle("Auto Farm Samu")
+createToggle("God Mode (UI)")
+createToggle("Invisible (UI)")
+createToggle("Speed Boost (UI)")
 
--- Hide / Show
-local hidden = false
-hideBtn.MouseButton1Click:Connect(function()
-    hidden = not hidden
-    main.Visible = not hidden
+-- ================= CONTROLES =================
+ghostBtn.MouseButton1Click:Connect(function()
+    main.Visible = not main.Visible
 end)
 
--- Atalho mobile/PC (RightShift)
+hideBtn.MouseButton1Click:Connect(function()
+    main.Visible = false
+end)
+
 UIS.InputBegan:Connect(function(input, gp)
     if gp then return end
     if input.KeyCode == Enum.KeyCode.RightShift then
@@ -127,4 +141,4 @@ UIS.InputBegan:Connect(function(input, gp)
     end
 end)
 
-print("✅ Sintonia Hub carregado (UI ONLY)")
+print("👻 Ghost Hub carregado (UI ONLY)")
