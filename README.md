@@ -1,11 +1,20 @@
-# Generic Lua Loader
+# Aimbot Logic Example (Lua)
 
-Modelo de loader escrito em Lua.
-Projeto educacional para estudo de estrutura de loaders.
+Este repositório contém um **exemplo educacional** de lógica de aimbot
+implementada em **Lua puro**, sem integração com jogos reais.
+
+## 🎯 Objetivo
+Demonstrar conceitos como:
+- Seleção de alvo mais próximo
+- Suavização de movimento
+- Cálculo de distância
 
 ## ⚠️ Aviso
-Este repositório não contém cheats, exploits ou scripts maliciosos.
-Código apenas para fins de aprendizado.
+Este código:
+- NÃO funciona em jogos
+- NÃO é exploit
+- NÃO interage com Roblox, FPS ou engines
+- É apenas para estudo de lógica e matemática
 
 ## 📂 Arquivos
-- `loader.lua` – loader principal
+- `aimbot_example.lua` — lógica simulada
