@@ -1,175 +1,169 @@
--- SINTONIA RP | PREMIUM PANEL
--- UI ONLY / RP / VISUAL
+--========================
+-- SITONIA RP - GUI BASE (EDITADO)
+--========================
 
-local player = game.Players.LocalPlayer
-local PlayerGui = player.PlayerGui
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
 
--- LIMPAR GUI ANTIGA
-if PlayerGui:FindFirstChild("SintoniaPanel") then
-    PlayerGui.SintoniaPanel:Destroy()
+-- Remove GUI antiga
+if player.PlayerGui:FindFirstChild("SitoniaRP") then
+	player.PlayerGui.SitoniaRP:Destroy()
 end
 
--- SCREEN GUI
-local gui = Instance.new("ScreenGui", PlayerGui)
-gui.Name = "SintoniaPanel"
+local gui = Instance.new("ScreenGui")
+gui.Name = "SitoniaRP"
 gui.ResetOnSpawn = false
+gui.Parent = player.PlayerGui
 
-------------------------------------------------
--- 🔐 TELA DE SENHA
-------------------------------------------------
-local keyFrame = Instance.new("Frame", gui)
-keyFrame.Size = UDim2.new(0,300,0,160)
-keyFrame.Position = UDim2.new(0.5,-150,0.5,-80)
-keyFrame.BackgroundColor3 = Color3.fromRGB(20,20,20)
-Instance.new("UICorner", keyFrame)
+--========================
+-- BOTÃO FLUTUANTE 💸
+--========================
+local toggleBtn = Instance.new("TextButton", gui)
+toggleBtn.Size = UDim2.new(0, 56, 0, 56)
+toggleBtn.Position = UDim2.new(0, 20, 0.5, -28)
+toggleBtn.BackgroundColor3 = Color3.fromRGB(25,25,25)
+toggleBtn.Text = "💸"
+toggleBtn.Font = Enum.Font.GothamBold
+toggleBtn.TextSize = 24
+toggleBtn.TextColor3 = Color3.fromRGB(255,255,255)
+toggleBtn.ZIndex = 10
 
-local keyTitle = Instance.new("TextLabel", keyFrame)
-keyTitle.Size = UDim2.new(1,0,0,40)
-keyTitle.BackgroundTransparency = 1
-keyTitle.Text = "SINTONIA RP"
-keyTitle.Font = Enum.Font.GothamBold
-keyTitle.TextSize = 18
-keyTitle.TextColor3 = Color3.new(1,1,1)
+Instance.new("UICorner", toggleBtn).CornerRadius = UDim.new(1,0)
 
-local keyBox = Instance.new("TextBox", keyFrame)
-keyBox.Size = UDim2.new(0.9,0,0,36)
-keyBox.Position = UDim2.new(0.05,0,0,55)
-keyBox.PlaceholderText = "Digite a senha"
-keyBox.Text = ""
-keyBox.Font = Enum.Font.Gotham
-keyBox.TextSize = 14
-keyBox.BackgroundColor3 = Color3.fromRGB(30,30,30)
-keyBox.TextColor3 = Color3.new(1,1,1)
-Instance.new("UICorner", keyBox)
-
-local keyBtn = Instance.new("TextButton", keyFrame)
-keyBtn.Size = UDim2.new(0.9,0,0,36)
-keyBtn.Position = UDim2.new(0.05,0,0,100)
-keyBtn.Text = "ENTRAR"
-keyBtn.Font = Enum.Font.GothamBold
-keyBtn.TextSize = 14
-keyBtn.BackgroundColor3 = Color3.fromRGB(40,40,40)
-keyBtn.TextColor3 = Color3.new(1,1,1)
-Instance.new("UICorner", keyBtn)
-
-------------------------------------------------
--- 👻 BOTÃO FLUTUANTE (IMAGEM)
-------------------------------------------------
-local toggle = Instance.new("ImageButton", gui)
-toggle.Size = UDim2.new(0,56,0,56)
-toggle.Position = UDim2.new(0,15,0.5,-28)
-toggle.BackgroundColor3 = Color3.fromRGB(20,20,20)
-toggle.Image = "rbxassetid://0" -- ⬅️ coloque o ID da imagem aqui
-toggle.Visible = false
-Instance.new("UICorner", toggle).CornerRadius = UDim.new(1,0)
-
-------------------------------------------------
--- MAIN PANEL
-------------------------------------------------
+--========================
+-- PAINEL PRINCIPAL
+--========================
 local main = Instance.new("Frame", gui)
-main.Size = UDim2.new(0,520,0,330)
-main.Position = UDim2.new(0.5,-260,0.5,-165)
-main.BackgroundColor3 = Color3.fromRGB(25,25,25)
+main.Size = UDim2.new(0, 520, 0, 320)
+main.Position = UDim2.new(0.5, -260, 0.5, -160)
+main.BackgroundColor3 = Color3.fromRGB(15,15,15)
 main.Visible = false
-Instance.new("UICorner", main).CornerRadius = UDim.new(0,14)
+main.ZIndex = 5
+Instance.new("UICorner", main).CornerRadius = UDim.new(0, 12)
 
-------------------------------------------------
--- STREAM MODE (OCULTAR)
-------------------------------------------------
-local streamHide = Instance.new("Frame", gui)
-streamHide.Size = UDim2.new(1,0,1,0)
-streamHide.BackgroundColor3 = Color3.new(0,0,0)
-streamHide.Visible = false
-streamHide.ZIndex = 50
-
-------------------------------------------------
--- TOGGLE ABRIR / FECHAR
-------------------------------------------------
-toggle.MouseButton1Click:Connect(function()
-    main.Visible = not main.Visible
+toggleBtn.MouseButton1Click:Connect(function()
+	main.Visible = not main.Visible
 end)
 
-------------------------------------------------
--- LIBERAR COM SENHA
-------------------------------------------------
-keyBtn.MouseButton1Click:Connect(function()
-    if keyBox.Text == "key321789" then
-        keyFrame:Destroy()
-        toggle.Visible = true
-    else
-        keyBox.Text = ""
-        keyBox.PlaceholderText = "Senha incorreta"
-    end
-end)
-
-------------------------------------------------
+--========================
 -- TÍTULO
-------------------------------------------------
+--========================
 local title = Instance.new("TextLabel", main)
-title.Size = UDim2.new(1,0,0,40)
+title.Size = UDim2.new(1, 0, 0, 40)
 title.BackgroundTransparency = 1
-title.Text = "SINTONIA RP"
+title.Text = "SITONIA RP"
+title.TextColor3 = Color3.fromRGB(255,255,255)
 title.Font = Enum.Font.GothamBold
 title.TextSize = 18
-title.TextColor3 = Color3.new(1,1,1)
 
-------------------------------------------------
--- SIDEBAR / CONTENT
-------------------------------------------------
+--========================
+-- SIDEBAR 💸
+--========================
 local side = Instance.new("Frame", main)
-side.Size = UDim2.new(0,140,1,-40)
-side.Position = UDim2.new(0,0,0,40)
-side.BackgroundColor3 = Color3.fromRGB(18,18,18)
+side.Size = UDim2.new(0, 120, 1, -40)
+side.Position = UDim2.new(0, 0, 0, 40)
+side.BackgroundColor3 = Color3.fromRGB(20,20,20)
 
-local content = Instance.new("Frame", main)
-content.Position = UDim2.new(0,140,0,40)
-content.Size = UDim2.new(1,-140,1,-40)
-content.BackgroundTransparency = 1
+local sideTitle = Instance.new("TextLabel", side)
+sideTitle.Size = UDim2.new(1, 0, 0, 35)
+sideTitle.BackgroundTransparency = 1
+sideTitle.Text = "💸"
+sideTitle.TextSize = 20
+sideTitle.TextColor3 = Color3.fromRGB(255,255,255)
+sideTitle.Font = Enum.Font.GothamBold
 
-------------------------------------------------
+--========================
 -- PÁGINAS
-------------------------------------------------
-local pages = {}
-local function newPage(name)
-    local p = Instance.new("Frame", content)
-    p.Size = UDim2.new(1,0,1,0)
-    p.Visible = false
-    p.BackgroundTransparency = 1
-    pages[name] = p
-    return p
+--========================
+local pages = Instance.new("Folder", main)
+pages.Name = "Pages"
+
+local function createPage(name)
+	local page = Instance.new("Frame", pages)
+	page.Name = name
+	page.Size = UDim2.new(1, -120, 1, -40)
+	page.Position = UDim2.new(0, 120, 0, 40)
+	page.BackgroundTransparency = 1
+	page.Visible = false
+	return page
 end
 
-local function sideBtn(txt, y, page)
-    local b = Instance.new("TextButton", side)
-    b.Size = UDim2.new(1,-10,0,34)
-    b.Position = UDim2.new(0,5,0,y)
-    b.Text = txt
-    b.Font = Enum.Font.Gotham
-    b.TextSize = 13
-    b.BackgroundColor3 = Color3.fromRGB(30,30,30)
-    b.TextColor3 = Color3.new(1,1,1)
-    Instance.new("UICorner", b)
+local adminPage = createPage("Admin")
+local visualPage = createPage("Visual")
+local playerPage = createPage("Player")
+local miscPage = createPage("Misc")
+local settingsPage = createPage("Settings")
+local extraPage = createPage("Extra")
 
-    b.MouseButton1Click:Connect(function()
-        for _,pg in pairs(pages) do pg.Visible = false end
-        pages[page].Visible = true
-    end)
+adminPage.Visible = true
+
+--========================
+-- BOTÕES SIDEBAR
+--========================
+local function sideButton(text, page, pos)
+	local btn = Instance.new("TextButton", side)
+	btn.Size = UDim2.new(1, -10, 0, 32)
+	btn.Position = UDim2.new(0, 5, 0, pos)
+	btn.Text = text
+	btn.BackgroundColor3 = Color3.fromRGB(30,30,30)
+	btn.TextColor3 = Color3.fromRGB(200,200,200)
+	btn.Font = Enum.Font.Gotham
+	btn.TextSize = 12
+	Instance.new("UICorner", btn)
+
+	btn.MouseButton1Click:Connect(function()
+		for _,p in pairs(pages:GetChildren()) do
+			p.Visible = false
+		end
+		page.Visible = true
+	end)
 end
 
-local function option(parent, text, y, callback)
-    local b = Instance.new("TextButton", parent)
-    b.Size = UDim2.new(0.9,0,0,36)
-    b.Position = UDim2.new(0.05,0,0,y)
-    b.Text = text
-    b.Font = Enum.Font.Gotham
-    b.TextSize = 14
-    b.BackgroundColor3 = Color3.fromRGB(35,35,35)
-    b.TextColor3 = Color3.new(1,1,1)
-    Instance.new("UICorner", b)
+sideButton("Admin", adminPage, 40)
+sideButton("Visual", visualPage, 80)
+sideButton("Player", playerPage, 120)
+sideButton("Misc", miscPage, 160)
+sideButton("Settings", settingsPage, 200)
+sideButton("Extra", extraPage, 240)
 
-    b.MouseButton1Click:Connect(function()
-        if callback then callback() end
-    end)
+--========================
+-- TOGGLE PADRÃO
+--========================
+local function createToggle(parent, text, yPos, callback)
+	local btn = Instance.new("TextButton", parent)
+	btn.Size = UDim2.new(0, 220, 0, 36)
+	btn.Position = UDim2.new(0, 20, 0, yPos)
+	btn.BackgroundColor3 = Color3.fromRGB(35,35,35)
+	btn.TextColor3 = Color3.fromRGB(255,255,255)
+	btn.Font = Enum.Font.Gotham
+	btn.TextSize = 13
+	btn.Text = text .. " [OFF]"
+	Instance.new("UICorner", btn)
+
+	local enabled = false
+	btn.MouseButton1Click:Connect(function()
+		enabled = not enabled
+		btn.Text = text .. (enabled and " [ON]" or " [OFF]")
+		if callback then
+			callback(enabled)
+		end
+	end)
 end
 
-------------------------------------------------
+--========================
+-- EXEMPLOS DE OPÇÕES
+--========================
+createToggle(adminPage, "Fly", 20)
+createToggle(adminPage, "Noclip", 65)
+createToggle(adminPage, "God Mode", 110)
+
+createToggle(visualPage, "ESP Player", 20)
+createToggle(visualPage, "ESP Nome", 65)
+
+createToggle(playerPage, "Speed Hack", 20)
+createToggle(playerPage, "Jump Boost", 65)
+
+createToggle(miscPage, "Anti Kick", 20)
+createToggle(miscPage, "Anti AFK", 65)
+
+createToggle(extraPage, "Função Secreta", 20)
