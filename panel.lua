@@ -1,72 +1,60 @@
--- Roblox Blox Fruits Panel Script
-local Player = game.Players.LocalPlayer
-local Mouse = Player:GetMouse()
+-- SISTEMA DE ACESSO POR CHAT
+-- Jogo próprio / educacional
 
--- Create GUI
-local screenGui = Instance.new('ScreenGui', Player.PlayerGui)
-local mainFrame = Instance.new('Frame', screenGui)
-mainFrame.Size = UDim2.new(0.3, 0, 0.5, 0)
-mainFrame.Position = UDim2.new(0.35, 0, 0.25, 0)
-mainFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-mainFrame.BorderSizePixel = 0
+local Players = game:GetService("Players")
 
-local titleLabel = Instance.new('TextLabel', mainFrame)
-titleLabel.Size = UDim2.new(1, 0, 0.1, 0)
-titleLabel.Text = 'Blox Fruits Panel'
-titleLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-titleLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+-- Tabela de acessos
+local access = {}
 
-local function createButton(name, position)
-    local button = Instance.new('TextButton', mainFrame)
-    button.Size = UDim2.new(0.8, 0, 0.1, 0)
-    button.Position = position
-    button.Text = name
-    button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    button.TextColor3 = Color3.fromRGB(0, 0, 0)
-    return button
+-- Função para negar acesso
+local function negarAcesso(player)
+	access[player.UserId] = nil
+	player:SetAttribute("Acesso", false)
 end
 
--- Aimbot
-local aimbotEnabled = false
-local aimbotButton = createButton('Toggle Aimbot', UDim2.new(0.1, 0, 0.15, 0))
-aimbotButton.MouseButton1Click:Connect(function()
-    aimbotEnabled = not aimbotEnabled
-    aimbotButton.Text = aimbotEnabled and 'Aimbot: ON' or 'Aimbot: OFF'
-end)
+-- Função para dar acesso temporário
+local function acessoTemporario(player, segundos)
+	player:SetAttribute("Acesso", true)
+	access[player.UserId] = "temp"
 
--- ESP
-local espEnabled = false
-local espButton = createButton('Toggle ESP', UDim2.new(0.1, 0, 0.3, 0))
-espButton.MouseButton1Click:Connect(function()
-    espEnabled = not espEnabled
-    espButton.Text = espEnabled and 'ESP: ON' or 'ESP: OFF'
-    -- Add ESP Logic
-end)
-
--- Main Loop
-game:GetService('RunService').RenderStepped:Connect(function()
-    if aimbotEnabled then
-        local target = findClosestPlayer()
-        if target then
-            Mouse.Target = target.Character.HumanoidRootPart
-        end
-    end
-end)
-
-function findClosestPlayer()
-    local closestPlayer = nil
-    local closestDistance = math.huge
-    for _, player in ipairs(game.Players:GetPlayers()) do
-        if player ~= Player and player.Character and player.Character:FindFirstChild('HumanoidRootPart') then
-            local distance = (player.Character.HumanoidRootPart.Position - Player.Character.HumanoidRootPart.Position).magnitude
-            if distance < closestDistance then
-                closestDistance = distance
-                closestPlayer = player
-            end
-        end
-    end
-    return closestPlayer
+	task.delay(segundos, function()
+		if access[player.UserId] == "temp" then
+			negarAcesso(player)
+			player:Kick("Seu acesso expirou.") -- pode remover se não quiser kick
+		end
+	end)
 end
 
--- Initialize
-screenGui.Enabled = true -- Make GUI visible
+-- Função para acesso permanente
+local function acessoPermanente(player)
+	player:SetAttribute("Acesso", true)
+	access[player.UserId] = "perm"
+end
+
+-- Quando jogador entra
+Players.PlayerAdded:Connect(function(player)
+	negarAcesso(player)
+
+	player.Chatted:Connect(function(msg)
+		msg = msg:lower()
+
+		if msg == "1" then
+			acessoTemporario(player, 3600) -- 1 hora
+			player:LoadCharacter()
+		elseif msg == "perm" then
+			acessoPermanente(player)
+			player:LoadCharacter()
+		end
+	end)
+end)
+
+-- Exemplo de bloqueio (opcional)
+Players.PlayerAdded:Connect(function(player)
+	player.CharacterAdded:Connect(function(character)
+		if not player:GetAttribute("Acesso") then
+			local humanoid = character:WaitForChild("Humanoid")
+			humanoid.WalkSpeed = 0
+			humanoid.JumpPower = 0
+		end
+	end)
+end)
