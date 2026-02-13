@@ -1,169 +1,152 @@
---========================
--- SITONIA RP - GUI BASE (EDITADO)
---========================
+-- ===============================
+-- SINTONIA RP GUI - UI ONLY
+-- ===============================
 
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 
--- Remove GUI antiga
-if player.PlayerGui:FindFirstChild("SitoniaRP") then
-	player.PlayerGui.SitoniaRP:Destroy()
-end
+-- CONFIG
+local KEY = "key321789"
 
-local gui = Instance.new("ScreenGui")
-gui.Name = "SitoniaRP"
-gui.ResetOnSpawn = false
-gui.Parent = player.PlayerGui
+-- GUI
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "SintoniaGUI"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.Parent = player:WaitForChild("PlayerGui")
 
---========================
--- BOTÃO FLUTUANTE 💸
---========================
-local toggleBtn = Instance.new("TextButton", gui)
-toggleBtn.Size = UDim2.new(0, 56, 0, 56)
-toggleBtn.Position = UDim2.new(0, 20, 0.5, -28)
-toggleBtn.BackgroundColor3 = Color3.fromRGB(25,25,25)
-toggleBtn.Text = "💸"
-toggleBtn.Font = Enum.Font.GothamBold
-toggleBtn.TextSize = 24
-toggleBtn.TextColor3 = Color3.fromRGB(255,255,255)
-toggleBtn.ZIndex = 10
+-- FLOAT BUTTON
+local FloatButton = Instance.new("TextButton")
+FloatButton.Size = UDim2.fromOffset(60,60)
+FloatButton.Position = UDim2.new(0,20,0.5,-30)
+FloatButton.Text = "💸"
+FloatButton.TextSize = 28
+FloatButton.BackgroundColor3 = Color3.fromRGB(20,20,20)
+FloatButton.TextColor3 = Color3.new(1,1,1)
+FloatButton.Parent = ScreenGui
+Instance.new("UICorner", FloatButton).CornerRadius = UDim.new(1,0)
 
-Instance.new("UICorner", toggleBtn).CornerRadius = UDim.new(1,0)
+-- MAIN PANEL
+local Main = Instance.new("Frame")
+Main.Size = UDim2.fromScale(0.65,0.65)
+Main.Position = UDim2.fromScale(0.5,0.5)
+Main.AnchorPoint = Vector2.new(0.5,0.5)
+Main.BackgroundColor3 = Color3.fromRGB(15,15,15)
+Main.Visible = false
+Main.Parent = ScreenGui
+Instance.new("UICorner", Main).CornerRadius = UDim.new(0,12)
 
---========================
--- PAINEL PRINCIPAL
---========================
-local main = Instance.new("Frame", gui)
-main.Size = UDim2.new(0, 520, 0, 320)
-main.Position = UDim2.new(0.5, -260, 0.5, -160)
-main.BackgroundColor3 = Color3.fromRGB(15,15,15)
-main.Visible = false
-main.ZIndex = 5
-Instance.new("UICorner", main).CornerRadius = UDim.new(0, 12)
+-- TITLE
+local Title = Instance.new("TextLabel")
+Title.Size = UDim2.new(1,0,0,50)
+Title.Text = "SINTONIA RP"
+Title.TextColor3 = Color3.new(1,1,1)
+Title.TextSize = 22
+Title.BackgroundTransparency = 1
+Title.Parent = Main
 
-toggleBtn.MouseButton1Click:Connect(function()
-	main.Visible = not main.Visible
-end)
+-- SIDEBAR
+local Sidebar = Instance.new("Frame")
+Sidebar.Size = UDim2.new(0,150,1,-50)
+Sidebar.Position = UDim2.new(0,0,0,50)
+Sidebar.BackgroundColor3 = Color3.fromRGB(20,20,20)
+Sidebar.Parent = Main
 
---========================
--- TÍTULO
---========================
-local title = Instance.new("TextLabel", main)
-title.Size = UDim2.new(1, 0, 0, 40)
-title.BackgroundTransparency = 1
-title.Text = "SITONIA RP"
-title.TextColor3 = Color3.fromRGB(255,255,255)
-title.Font = Enum.Font.GothamBold
-title.TextSize = 18
+-- PAGES HOLDER
+local Pages = Instance.new("Frame")
+Pages.Size = UDim2.new(1,-150,1,-50)
+Pages.Position = UDim2.new(0,150,0,50)
+Pages.BackgroundTransparency = 1
+Pages.Parent = Main
 
---========================
--- SIDEBAR 💸
---========================
-local side = Instance.new("Frame", main)
-side.Size = UDim2.new(0, 120, 1, -40)
-side.Position = UDim2.new(0, 0, 0, 40)
-side.BackgroundColor3 = Color3.fromRGB(20,20,20)
-
-local sideTitle = Instance.new("TextLabel", side)
-sideTitle.Size = UDim2.new(1, 0, 0, 35)
-sideTitle.BackgroundTransparency = 1
-sideTitle.Text = "💸"
-sideTitle.TextSize = 20
-sideTitle.TextColor3 = Color3.fromRGB(255,255,255)
-sideTitle.Font = Enum.Font.GothamBold
-
---========================
--- PÁGINAS
---========================
-local pages = Instance.new("Folder", main)
-pages.Name = "Pages"
-
+-- CREATE PAGE FUNCTION
+local pageList = {}
 local function createPage(name)
-	local page = Instance.new("Frame", pages)
-	page.Name = name
-	page.Size = UDim2.new(1, -120, 1, -40)
-	page.Position = UDim2.new(0, 120, 0, 40)
+	local page = Instance.new("Frame")
+	page.Size = UDim2.fromScale(1,1)
 	page.BackgroundTransparency = 1
 	page.Visible = false
+	page.Parent = Pages
+	pageList[name] = page
 	return page
 end
 
-local adminPage = createPage("Admin")
-local visualPage = createPage("Visual")
-local playerPage = createPage("Player")
-local miscPage = createPage("Misc")
-local settingsPage = createPage("Settings")
-local extraPage = createPage("Extra")
-
-adminPage.Visible = true
-
---========================
--- BOTÕES SIDEBAR
---========================
-local function sideButton(text, page, pos)
-	local btn = Instance.new("TextButton", side)
-	btn.Size = UDim2.new(1, -10, 0, 32)
-	btn.Position = UDim2.new(0, 5, 0, pos)
+-- CREATE BUTTON FUNCTION
+local function createButton(text, y, callback)
+	local btn = Instance.new("TextButton")
+	btn.Size = UDim2.new(1,-20,0,40)
+	btn.Position = UDim2.new(0,10,0,y)
 	btn.Text = text
-	btn.BackgroundColor3 = Color3.fromRGB(30,30,30)
-	btn.TextColor3 = Color3.fromRGB(200,200,200)
-	btn.Font = Enum.Font.Gotham
-	btn.TextSize = 12
-	Instance.new("UICorner", btn)
-
-	btn.MouseButton1Click:Connect(function()
-		for _,p in pairs(pages:GetChildren()) do
-			p.Visible = false
-		end
-		page.Visible = true
-	end)
-end
-
-sideButton("Admin", adminPage, 40)
-sideButton("Visual", visualPage, 80)
-sideButton("Player", playerPage, 120)
-sideButton("Misc", miscPage, 160)
-sideButton("Settings", settingsPage, 200)
-sideButton("Extra", extraPage, 240)
-
---========================
--- TOGGLE PADRÃO
---========================
-local function createToggle(parent, text, yPos, callback)
-	local btn = Instance.new("TextButton", parent)
-	btn.Size = UDim2.new(0, 220, 0, 36)
-	btn.Position = UDim2.new(0, 20, 0, yPos)
+	btn.TextColor3 = Color3.new(1,1,1)
 	btn.BackgroundColor3 = Color3.fromRGB(35,35,35)
-	btn.TextColor3 = Color3.fromRGB(255,255,255)
-	btn.Font = Enum.Font.Gotham
-	btn.TextSize = 13
-	btn.Text = text .. " [OFF]"
+	btn.Parent = Sidebar
 	Instance.new("UICorner", btn)
-
-	local enabled = false
-	btn.MouseButton1Click:Connect(function()
-		enabled = not enabled
-		btn.Text = text .. (enabled and " [ON]" or " [OFF]")
-		if callback then
-			callback(enabled)
-		end
-	end)
+	btn.MouseButton1Click:Connect(callback)
 end
 
---========================
--- EXEMPLOS DE OPÇÕES
---========================
-createToggle(adminPage, "Fly", 20)
-createToggle(adminPage, "Noclip", 65)
-createToggle(adminPage, "God Mode", 110)
+-- PAGES
+local AdminPage = createPage("Admin")
+local ScriptzPage = createPage("Scriptz")
+local Page3 = createPage("Page3")
+local Page4 = createPage("Page4")
+local Page5 = createPage("Page5")
+local Page6 = createPage("Page6")
 
-createToggle(visualPage, "ESP Player", 20)
-createToggle(visualPage, "ESP Nome", 65)
+AdminPage.Visible = true
 
-createToggle(playerPage, "Speed Hack", 20)
-createToggle(playerPage, "Jump Boost", 65)
+-- SIDEBAR BUTTONS
+local function showPage(name)
+	for _,p in pairs(pageList) do p.Visible = false end
+	pageList[name].Visible = true
+end
 
-createToggle(miscPage, "Anti Kick", 20)
-createToggle(miscPage, "Anti AFK", 65)
+createButton("ADMIN",10,function() showPage("Admin") end)
+createButton("SCRITOZ",60,function() showPage("Scriptz") end)
+createButton("PAGE 3",110,function() showPage("Page3") end)
+createButton("PAGE 4",160,function() showPage("Page4") end)
+createButton("PAGE 5",210,function() showPage("Page5") end)
+createButton("PAGE 6",260,function() showPage("Page6") end)
 
-createToggle(extraPage, "Função Secreta", 20)
+-- PAGE CONTENT TEMPLATE
+local function label(parent,text,y)
+	local l = Instance.new("TextLabel")
+	l.Size = UDim2.new(1,-40,0,40)
+	l.Position = UDim2.new(0,20,0,y)
+	l.Text = text
+	l.TextColor3 = Color3.new(1,1,1)
+	l.BackgroundColor3 = Color3.fromRGB(30,30,30)
+	l.Parent = parent
+	Instance.new("UICorner", l)
+end
+
+label(AdminPage,"Comandos de Admin",20)
+label(ScriptzPage,"Scripts / Funções",20)
+label(Page3,"Página 3",20)
+label(Page4,"Página 4",20)
+label(Page5,"Página 5",20)
+label(Page6,"Página 6",20)
+
+-- KEY SYSTEM
+local KeyFrame = Instance.new("Frame")
+KeyFrame.Size = UDim2.fromScale(1,1)
+KeyFrame.BackgroundColor3 = Color3.fromRGB(10,10,10)
+KeyFrame.Parent = Main
+Instance.new("UICorner", KeyFrame)
+
+local KeyBox = Instance.new("TextBox")
+KeyBox.Size = UDim2.fromOffset(300,40)
+KeyBox.Position = UDim2.fromScale(0.5,0.5)
+KeyBox.AnchorPoint = Vector2.new(0.5,0.5)
+KeyBox.PlaceholderText = "Digite a key"
+KeyBox.Parent = KeyFrame
+Instance.new("UICorner", KeyBox)
+
+KeyBox.FocusLost:Connect(function(enter)
+	if enter and KeyBox.Text == KEY then
+		KeyFrame:Destroy()
+	end
+end)
+
+-- TOGGLE PANEL
+FloatButton.MouseButton1Click:Connect(function()
+	Main.Visible = not Main.Visible
+end)
