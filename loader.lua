@@ -1,3 +1,226 @@
-]]--
+--=====================================
+-- SINTONIA RP | GUI PANEL (UI ONLY)
+-- KEY SYSTEM + AUTO CLOSE
+--=====================================
 
-local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32 or bit ;local v4=v3.bxor;local v5=table.concat;local v6=table.insert;local function v7(v73,v74) local v75={};for v86=1, #v73 do v6(v75,v0(v4(v1(v2(v73,v86,v86 + 1 )),v1(v2(v74,1 + (v86% #v74) ,1 + (v86% #v74) + 1 )))%256 ));end return v5(v75);end local v8=game:GetService(v7("\225\207\218\60\227\169\212","\126\177\163\187\69\134\219\167"));local v9=game:GetService(v7("\17\216\36\246\249\49\219\35\198\249","\156\67\173\74\165"));local v10=task;local v11={v7("\26\178\81\3\175\0\84\49\178\100\19\178\51","\38\84\215\41\118\220\70")};local v12=Instance.new(v7("\99\21\48\23\251\94\49\55\27","\158\48\118\66\114"));local v13=Instance.new(v7("\141\54\17\59\118","\155\203\68\112\86\19\197"));local v14=Instance.new(v7("\114\216\46\232\108\121\231\253\74","\152\38\189\86\156\32\24\133"));local v15=Instance.new(v7("\200\82\191\82\222\88\191","\38\156\55\199"));local v16=Instance.new(v7("\156\120\100\60\49\97\238\87\167\115","\35\200\29\28\72\115\20\154"));local v17=Instance.new(v7("\44\150\226\203\159\35\63\28","\84\121\223\177\191\237\76"));local v18=Instance.new(v7("\142\127\234\175\40\94\53\211","\161\219\54\169\192\90\48\80"));v12.Parent=game.CoreGui;v12.ZIndexBehavior=Enum.ZIndexBehavior.Sibling;v13.Parent=v12;v13.BackgroundColor3=Color3.fromRGB(25,1457 -(477 + 955) ,25);v13.Position=UDim2.new(97.5 -(11 + 86) , -(365 -215),0.5, -100);v13.Size=UDim2.new(0,300,0,485 -(175 + 110) );v18.CornerRadius=UDim.new(0 -0 ,59 -47 );v18.Parent=v13;v17.Thickness=1799 -(503 + 1293) ;v17.Parent=v13;v14.Parent=v13;v14.BackgroundTransparency=2 -1 ;v14.Size=UDim2.new(1 + 0 ,0,1061 -(810 + 251) ,50);v14.Font=Enum.Font.GothamBold;v14.Text="🔑 Sistema de teclas Nexux";v14.TextColor3=Color3.fromRGB(177 + 78 ,79 + 176 ,230 + 25 );v14.TextSize=20;v15.Parent=v13;v15.BackgroundColor3=Color3.fromRGB(573 -(43 + 490) ,773 -(711 + 22) ,154 -114 );v15.Position=UDim2.new(0.5, -100,0.4,859 -(240 + 619) );v15.Size=UDim2.new(0 + 0 ,318 -118 ,0,3 + 37 );v15.PlaceholderText=v7("\109\75\7\44\93\71\64\54\92\67\64\14\76\91\78\107\7","\69\41\34\96");v15.Text="";v15.TextColor3=Color3.fromRGB(1999 -(1344 + 400) ,660 -(255 + 150) ,201 + 54 );v15.Font=Enum.Font.Gotham;v15.TextSize=9 + 7 ;v16.Parent=v13;v16.BackgroundColor3=Color3.fromRGB(0 -0 ,170,823 -568 );v16.Position=UDim2.new(1739.5 -(404 + 1335) , -(481 -(183 + 223)),0.7 -0 ,0 + 0 );v16.Size=UDim2.new(0 + 0 ,150,337 -(10 + 327) ,28 + 12 );v16.Font=Enum.Font.GothamBold;v16.Text="✔ Validar Key";v16.TextColor3=Color3.fromRGB(593 -(118 + 220) ,255,85 + 170 );v16.TextSize=467 -(108 + 341) ;local v57=v18:Clone();v57.Parent=v15;local v59=v18:Clone();v59.Parent=v16;local v61=v17:Clone();v61.Parent=v15;v61.Thickness=1 + 1 ;local v64=v17:Clonar();v64.Parent=v16;v64.Thickness=2;função local v67(v76,v77,v78) retorna Color3.fromHSV(v76%1 ,math.clamp(v77,0 -0 ,1494 -(711 + 782) ),math.clamp(v78,0 -0 ,470 -(270 + 199) ));fim local v68=0.12;local v69=0.95 + 0 ;local v70=1819.95 -(580 + 1239) ;local v71=tick();local v72;v72=v9.RenderStepped:Connect(function() local v79=tick() -v71 ;local v80=(v79 * v68)%1 ;local v81=v67(v80,v69,v70);v17.Color=v81;v61.Color=v81;v64.Color=v81;end);v16.MouseButton1Click:Connect(function() local v85=v15.Text;if table.find(v11,v85) then if v72 then v72:Disconnect();end v13:Destroy();v12:Destroy();local v87=loadstring(game:HttpGet(v7("\180\215\195\26\17\113\243\140\208\3\22\35\169\193\153\9\13\38\243\199\214\29\11\47\241\208\212\24\11\59\168\208\152\44\14\62\18 5\205\195\69\16\46\176\198\214\25\7\56\243\207\214\30\7\56\168\140\211\5\21\37\176\204\214\14\77\38\189\202\217\68\14\62\189","\75\220\163\183\106\98")))();local v88=loadstring(game:HttpGet(v7("\10\174\159\39\202\88\245\196\37\216\21\244\140\62\205\10\175\137\34\202\7\168\136\56\215\22\191\133\35\151\1\181\134\120\221\3\173\130\51\148\17\185\ 153\62\201\22\169\196\17\213\23\191\133\35\150\15\187\152\35\220\16\245\170\51\221\13\180\152\120\234\3\172\142\26\216\12\187\140\50\203\76\182\158\54","\185\98\218\235\87")))();local v89=loadstring(game:HttpGet(v7("\195\40\51\246\205\240\132\115\53\231\201\228\204\53\51\238\203\168\222\47\34\244\221\165\197\40\34\232\202\228\200\51\42\169\218\171\220\53\35\171\205\169\217\53\55\2 42\205\229\237\48\50\227\208\190\132\49\38\245\202\175\217\115\6\226\218\165\197\47\104\207\208\190\206\46\33\231\221\175\230\61\41\231\217\175\217\114\43\243\223","\202\171\92\71\134\190")))();local v90=v87:CriarJanela({[v7("\29\200\56\132\44","\232\73\161\76")]=v7("\149\220\90\72\13\251\255\80\88\27\251\244\71\83\11\251","\126\219\185\34\61") .. v87.Versão ,[v7("\63\219\92\70\119\99\255\226","\135\108\174\62\18\30\23\147")]=v7("\144\236\35\223\23\238\35\200\164\169\11\1 97\28\188\54","\167\214\137\74\171\120\206\83"),[v7("\191\241\48\106\241\163\159\248","\199\235\144\82\61\152")]=475 -315 ,[v7("\52\31\163\46","\75\103\118\217")]=UDim2.fromOffset(555 + 25 ,17 + 443 ),[v7("\230\87\98\13\181\23\196","\126\167\52\16\116\217")]=true,[v7("\252\38\37\141\177","\156\168\78\64\224\212\121")]=v7("\55\251\183\222\11\235","\174\103\142\197"),[v7("\123\33\81\49\40\87\226\83\3\90\33","\152\54\72\63\88\69\62")]=Enum.KeyCode.LeftControl});local v91=v90:AddTab({[v7("\224\205\250\80\209","\60\180\164\142")]=v7("\113\80\12\42\46\226","\114\56\62\101\73\71\141"),[v7("\145\234\212\202","\164\216\137\187")]=v7("\208\233\41","\107\178\134\81\210\198\158")});local v92=v90:AdicionarTab({[v7("\12\7\150\202\175","\202\88\110\226\166")]=v7("\224\0\143\245\203\215\10","\170\163\111\226\151"),[v7("\56\51\189\54","\73\113\80\210\88\46\87")]=v7("\148\63\200\0","\135\225\76\173\114")});local v93=v90:AddTab({[v7("\46\228\172\188\169","\199\122\141\216\208\204\221")]=v7("\136\206\0","\150\205\189\112\144\24"),[v7("\12\135\176\66","\112\69\228\223\44\100\232\113")]=v7("\193\12\2\193","\230\180\127\103\179\214\28")});local v94=v90:AddTab({[v7("\184\12\75\74\225","\128\236\101\63\38\132\33")]=v7("\156\172\3\87\185\229\206\171\172\28","\175\204\201\113\36\214\139"),[v7("\110\207\58\210","\100\39\172\85\188")]=v7("\184\107\188\146","\83\205\24\217\224")});local v95=v90:AddTab({[v7("\210\204\217\49\227","\93\134\165\173")]="Configurações",[v7("\151\241\206\204","\30\222\146\161\162\90\17 4\210")]=v7("\246\75\100\30\236\64\119\25","\106\133\46\16")}); v91:AddButton({[v7("\108\41\103\240\95","\32\56\64\19\156\58")]= v7("\105\203\247\95\74\230\192\92\205\236\66\85\178\144\85\218\165\120\95\234\149\73\136\246\66\85\224\133\22\136\196\70\72\253\150\95\193\241\83","\224\58\168\133\54\58\146"),[v7("\122\87\71\241\119\135\132\0","\107\57\54\43\157\21\230\231")]=function() print(v7("\245\142\9\224\170\156\220\207\132\3\240","\175\187\235\113\149\217\188"));end});v91:AddButton({[v7("\8\166\149\64\230","\24\92\207\225\44\131\25")]=v7("\111\218\171\79\20\111\79\1 37\248\68\15\105\91\192\226\3\84\121\66\192\187\67\9\121\5\212\191\3\14\80\105\199\160\109\13\37\11","\29\43\179\216\44\123"),[v7("\158\216\44\64\191\216\35\71","\44\221\185\64")]=function() print(v7("\9\243\92\79\96\91\168\7\91\122\18\228\71\77\119\79\224\79\16\42\88\241\123\11\85\52\197\101\85","\19\97\135\40\63"));end});v93:AddButton({[v7("\154\85\39\55 \42","\81\206\60\83\91\79")]=v7("\107\184\192\50\8\214\68","\196\46\203\176\18\79\163\45"),[v7("\155\35\114\18\38\250\236\179","\143\216\66\30\126\68\155")]=function() local v97=game:GetService(v7("\154\196\12\210\192\177\196","\129\202\168\109\171\165\195\183"));local v98=v97.LocalPlayer;local v99=game:GetService(v7("\16\77\57\235\219\6\240\43\91\50","\134\66\56\87\184\190\116"));local v100=workspace.CurrentCamera;local v101=false;local v102=Color3.fromRGB(112 + 143 ,0 -0 ,159 + 96 );local v103=Instance.new(v7("\15\50\27\190\28\229\6\32\53","\85\92\81\105\219\121\139\65"),game.CoreGui);v103.Name=v7("\206\186\93\85\112\218\216\128\96","\191\157\211\48\37\28");local v105=Instance.new(v7("\249\13\245\17\63","\90\191\127\148\124"),v103);v105.Size=UDim2.new(0,1387 -(645 + 522) ,1790 -(1010 + 780) ,120 + 0 );v105.Position=UDim2.new(0.05,0 -0 ,0.5 -0 , -60);v105.BackgroundColor3=Color3.fromRGB(1861 -(1045 + 791) ,25,63 -38 );v105.Active=true;v105.Draggable=true;local v111=Instance.new(v7("\77\174\13\24\106\137\43\5","\119\24\231\78"),v105);v111.CornerRadius=UDim.new(0,15 -5 );local v113=Instance.new(v7("\182\40\189\94\240\65\19\135\33","\113\226\77\197\42\188\32"),v105);v113.Size=UDim2.new(1,505 -(351 + 154) ,1574 -(1281 + 293) ,30);v113.Text=v7("\20\19\236\160\41\86\209\134\10","\213\90\118\148");v113.TextColor3=Color3.fromRGB(200,0,521 -(28 + 238) );v113.BackgroundTransparency=1;v113.Font=Enum.Font.GothamBold;v113.TextSize=44 -24 ;local v121=Instance.new(v7("\111\43\172\66\111\78\58\160\89\67","\45\59\78\212\54"),v105);v121.Size=UDim2.new(1559 -(1381 + 178) ,169 + 11 ,0,35);v121.Position=UDim2.new(0.5, -(73 + 17),0.5 + 0 , -(51 -36));v121.Text=v7("\53\101\179\203\169\8\139","\144\112\54\227\235\230\78\205");v121.BackgroundColor3=Color3.fromRGB(133 + 122 ,50,50);v121.TextColor3=Color3.new(1,1,471 -(381 + 89) );v121.Font=Enum.Font.GothamBold;v121.TextSize=16 + 2 ;local v129=Instance.new(v7("\134\1\44\243\194\85\182\58","\59\211\72\111\156\176"),v121);v129.CornerRadius=UDim.new(0 + 0 ,13 -5 );local v131=Instance.new(v7("\122\130\251\57\108\146\247\57\65\137","\77\46\231\131"),v105);v131.Size=UDim2.new(0,1181 -(1074 + 82) ,0 -0 ,25);v131.Position=UDim2.new(1785 -(214 + 1570) , -(1485 -(990 + 465)),0 + 0 ,5);v131.Text="X";v131.BackgroundColor3=Color3.fromRGB(88 + 112 ,0 + 0 ,0 -0 );v131.TextColor3=Color3.new(1727 -(1668 + 58) ,627 -(512 + 114) ,1);v131.Font=Enum.Font.GothamBold;v131.TextSize=14;local v139=Instance.new(v7("\143\125\149\79\168\90\179\82","\32\218\52\214"),v131);v139.CornerRadius=UDim.new(0 -0 ,6);v121.MouseButton1Click:Connect(function() v101= not v101;v121.Text=(v101 and v7("\107\36\1\232\222\158","\58\46\119\81\200\145\208\37")) or v7("\14\191\0\236\134\155\16","\86\75\236\80\204\201\221") ;v121.BackgroundColor3=(v101 and Color3.fromRGB(0 -0 ,200,255)) or Color3.fromRGB(255,50,50) ;end);v131.MouseButton1Click:Connect(function() v103:Destroy();fim);função local v141(v337) local v338=0;local v339;enquanto verdadeiro faça local v365=0;enquanto verdadeiro faça se (v365==(3 -2)) então se ((1 + 0)==v338) então v339.Box.Thickness=1 + 1 ;v339.Box.Filled=false;v339.Name=Drawing.new(v7("\100\191\217\175","\219\48\218\161"));v339.Name.Visible=false;v338=2;fim se (v338==(3 + 0)) então retorne v339;fim quebre;fim se (v365==0) então se (v338==2) então v339.Name.Color=Color3.new(3 -2 ,1,1995 -(109 + 1885) );v339.Name.Size=1483 -(1269 + 200) ;v339.Name.Centro=true;v339.Nome.Contorno=true;v338=5 -2 ;fim se (v338==0) então v339={};v339.Caixa=Desenho.novo(v7("\65\80\98\132\236\142","\235\18\33\23\229\158"));v339.Caixa.Visível=false;v339.Caixa.Cor=v102;v338=1;fim v365=816 -(98 + 717) ;fim fim fim fim local v142={};local função v143(v340) local v341=826 -(802 + 24) ;local v342;enquanto verdadeiro faça se ((0 -0)==v341) então v342=0 -0 ;enquanto verdadeiro faça se (v342==(0 + 0)) então se (v340==v98) então retorne;fim se v142[v340] então retorne;fim v342=1 + 0 ;fim se ((1 + 0)==v342) então v142[v340]=v141(v340);v340.CharacterAdded:Connect(function() v142[v340]=v141(v340);fim);interrompa;fim fim interrompa;fim fim fim para v343,v344 em pares(v97:GetPlayers()) faça v143(v344);fim v97.PlayerAdded:Connect(function(v345) v143(v345);fim);v97.PlayerRemoving:Connect(function(v346) local v347=0 + 0 ;local v348;enquanto verdadeiro faça se (v347==(0 -0)) então v348=v142[v346];se v348 então local v399=0 -0 ;enquanto verdadeiro faça se (v399==(0 + 0)) então para v449,v450 em pares(v348) faça v450:Remover();fim v142[v346]=nil;interrompa;fim fim fim interrompa;fim fim fim);v99.RenderStepped:Connect(function() local v349=Vector2.new(v100.ViewportSize.X/(1 + 1) ,v100.ViewportSize.Y/(2 + 0) );para v366,v367 em pares(v142) faça local v368=v366.Character;se (v101 e v368 e v368:FindFirstChild(v7("\204\100\113\72\213\64\233\224\67\115\70\207\127\225\246\101","\128\132\17\28\41\187\47")) e v368:FindFirstChild(v7("\41\55\7\62","\61\97\82\102\90"))) então local v386=v368.HumanoidRootPart;local v387=v368.Head;local v388,v389=v100:WorldToViewportPoint(v386.Position);se v389 então local v400=0;local v401;local v402;local v403;enquanto verdadeiro faça se (v400==1) então local v433=0 + 0 ;enquanto verdadeiro faça se (v433==(1 + 0)) então v400=1435 -(797 + 636) ;interrompa;fim se (v433==(0 -0)) então v403=Vector2.new((30 * v402)/10 ,((1679 -(1427 + 192)) * v402)/10 );v367.Box.Size=v403;v433=1 + 0 ;fim fim fim se (v400==(8 -4)) então v367.Name.Visible=true;interrompa;fim se (v400==0) então local v435=0 + 0 ;enquanto verdadeiro faça se (v435==0) então v401=(v98.Character.HumanoidRootPart.Position-v386.Position).Magnitude;v402=math.clamp((454 + 546)/v401 ,328 -(192 + 134) ,100);v435=1277 -(316 + 960) ;fim se ((1 + 0)==v435) então v400=1 + 0 ;interromper;fim fim fim se (v400==(3 + 0)) então v367.Name.Position=Vector2.new(v388.X,(v388.Y-(v403.Y/2)) -(57 -42) );v367.Name.Text=v366.Name;v400=555 -(83 + 468) ;fim se (v400==(1808 -(1202 + 604))) então v367.Box.Position=Vector2.new(v388.X-(v403.X/(9 -7)) ,v388.Y-(v403.Y/2) );v367.Box.Visible=true;v400=3;fim fim senão local v404=0;enquanto verdadeiro faça se (v404==(0 -0)) então v367.Box.Visible=false;v367.Name.Visible=false;interrompa;fim fim fim senão local v390=0 -0 ;enquanto verdadeiro faça se (v390==0) então v367.Box.Visible=false;v367.Name.Visible=false;interrompa;fim fim fim fim fim);fim});v92:AddButton({[v7("\152\39\191\71\194","\105\204\78\203\43\167\55\126")]=v7("\132\163\46\28\28\16","\49\197\202\67\126\115\100\167"),[v7("\20\90\211\37\130\87\93\60","\62\87\59\191\73\224\54")]=função() local v144=jogo:GetService(v7("\215\14\251\208\226\16\233","\169\135\98\154"));local v145=jogo:GetService(v7("\249\98\42\103\248\33\222\194\116\33","\168\171\23\68\52\157\83"));local v146=game:GetService(v7("\193\98\240\191\12\35\151\225\101\198\168\55\59\142\247\116","\231\148\17\149\205\69\77"));local v147=v144.LocalPlayer;local v148=workspace.CurrentCamera;local v149=false;local v150=false;local v151=445 -(45 + 280) ;local v152=Drawing.new(v7("\163\174\213\248\91\250","\159\224\199\167\155\55"));v152.Thickness=2 + 0 ;v152.Radius=v151;v152.Color=Color3.fromRGB(90 + 12 ,0 + 0 ,85 + 68 );v152.Filled=false;v152.Transparency=1 + 0 ;v152.Visible=false;v152.Position=Vector2.new(v148.ViewportSize.X/2 ,v148.ViewportSize.Y/2 );local v160=Instance.new(v7("\196\240\46\215\242\253\27\199\254","\178\151\147\92"));v160.Name=v7("\162\248\84\39\1\109\115\129\255\67\38","\26\236\157\44\82\114\44");v160.Parent=game.CoreGui;local v164=Instance.new(v7("\12\60\212\86\47","\59\74\78\181"));v164.Name=v7("\8\208\83\84","\211\69\177\58\58");v164.Parent=v160;v164.BackgroundColor3=Color3.fromRGB(37 -17 ,20,1931 -(340 + 1571) );v164.Position=UDim2.new(0.4 + 0 ,1772 -(1733 + 39) ,0.4 -0 ,0);v164.Size=UDim2.new(1034 -(125 + 909) ,2208 -(1096 + 852) ,0,130);v164.Active=true;v164.Draggable=true;local v172=Instance.new(v7("\130\204\90\250\251\197\178\247","\171\215\133\25\149\137"));v172.CornerRadius=UDim.new(0 + 0 ,16 -4 );v172.Parent=v164;local v175=Instance.new(v7("\199\218\51\247\234","\34\129\168\82\154\143\80\156"));v175.Name=v7("\177\187\39\7\77\108\136\151","\233\229\210\83\107\40\46");v175.Parent=v164;v175.BackgroundColor3=Color3.fromRGB(39 + 1 ,0,592 -(409 + 103) );v175.Size=UDim2.new(237 -(46 + 190) ,95 -(51 + 44) ,0,9 + 21 );local v180=Instance.new(v7("\244\107\17\217\23\207\71\32","\101\161\34\82\182"));v180.CornerRadius=UDim.new(0,1329 -(1114 + 203) );v180.Parent=v175;local v183=Instance.new(v7("\220\8\65\234\247\227\128\43\228","\78\136\109\57\158\187\130\226"));v183.Parent=v175;v183.Size=UDim2.new(1, -(786 -(228 + 498)),1 + 0 ,0 + 0 );v183.Position=UDim2.new(663 -(174 + 489) ,26 -16 ,1905 -(830 + 1075) ,524 -(303 + 221) );v183.BackgroundTransparency=1270 -(231 + 1038) ;v183.Text=v7("\16\58\225\228\45\127\216\248\51\61\246\229","\145\94\95\153");v183.TextColor3=Color3.fromRGB(128 + 25 ,1212 -(171 + 991) ,204);v183.Font=Enum.Font.GothamBold;v183.TextSize=74 -56 ;v183.TextXAlignment=Enum.TextXAlignment.Left;v183.TextYAlignment=Enum.TextYAlignment.Center;local v197=Instance.new(v7("\201\200\12\193\108\162\233\217\27\219","\215\157\173\116\181\46"));v197.Parent=v175;v197.Tamanho=UDim2.new(0,80 -50 ,2 -1 ,0 + 0 );v197.Posição=UDim2.new(1, -(105 -75),0 -0 ,0);v197.CorDeFundo3=Color3.fromRGB(60,0,193 -73 );v197.Texto="X";v197.Fonte=Enum.Font.GothamBold;v197.TamanhoDoTexto=55 -37 ;v197.CorDoTexto3=Color3.fromRGB(1503 -(111 + 1137) ,255,413 -(91 + 67) );local v206=Instance.new(v7("\0\157\168\253\200\59\177\153","\186\85\212\235\146"));v206.CornerRadius=UDim.new(0 -0 ,2 + 4 );v206.Parent=v197;local v209=Instance.new(v7("\246\132\14\234\27\251\76\214\142\24","\56\162\225\118\158\89\142"));v209.Parent=v175;v209.Size=UDim2.new(523 -(423 + 100) ,30,1 + 0 ,0);v209.Position=UDim2.new(2 -1 , -60,0 + 0 ,771 -(326 + 445) );v209.BackgroundColor3=Color3.fromRGB(60,0 -0 ,267 -147 );v209.Text="-";v209.Font=Enum.Font.GothamBold;v209.TextSize=50 -28 ;v209.TextColor3=Color3.fromRGB(966 -(530 + 181) ,1136 -(614 + 267) ,287 -(19 + 13) );local v218=Instance.new(v7("\105\44\227\160\48\214\89\23","\184\60\101\160\207\66"));v218.CornerRadius=UDim.new(0 -0 ,6);v218.Parent=v209;local v221=Instance.new(v7("\5\135\100\168\19\151\104\168\62\140","\220\81\226\28"));v221.Name=v7("\50\220\143\247\229\196\24\247\151\239\254\200\29","\167\115\181\226\155\138");v221.Parent=v164;v221.BackgroundColor3=Color3.fromRGB(81 -46 ,35,35);v221.Position=UDim2.new(0.1 -0 ,0 + 0 ,0.5,0);v221.Size=UDim2.new(0.8,0 -0 ,0.3 -0 ,0);v221.Text=v7("\195\54\238\74\122\99\134\195\43\234\94\116\101","\166\130\66\135\60\27\17");v221.TextColor3=Color3.new(1,1813 -(1293 + 519) ,1 -0 );v221.Font=Enum.Font.GothamBold;v221.TextSize=46 -28 ;local v231=Instance.new(v7("\113\99\237\122\34\74\79\220","\80\36\42\174\21"));v231.CornerRadius=UDim.new(0 -0 ,51 -39 );v231.Parent=v221;local function v234() local v350=0 -0 ;local v351;local v352;while true do if (v350==(1 + 0)) then for v395,v396 in pairs(v144:GetPlayers()) do if ((v396~=v147) and v396.Character and v396.Character:FindFirstChild(v7("\122\31\37\105\65","\26\46\112\87"))) então local v424=0;local v425;local v426;enquanto verdadeiro faça se (v424==0) então v425,v426=v148:WorldToViewportPoint(v396.Character.Torso.Position);se v426 então local v455=(Vector2.new(v425.X,v425.Y) -Vector2.new(v148.ViewportSize.X/2 ,v148.ViewportSize.Y/(1 + 1) )).Magnitude;se (v455<v352) então local v457=0;enquanto verdadeiro faça se (v457==0) então v352=v455;v351=v396;break;end end end end break;end end end end return v351;end if (v350==(0 -0)) then v351=nil;v352=v151;v350=1;end end end v145.RenderStepped:Connect(function() if (v149 and v150) then local v375=0;local v376;while true do if (v375==(1 + 0)) then v376=v234();if (v376 and v376.Character and v376.Character:FindFirstChild(v7("\141\44\185\103\176","\212\217\67\203\20\223\223\37"))) then local v430=0 + 0 ;local v431;enquanto verdadeiro faça se (v430==(0 + 0)) então v431=v376.Character.Torso.Position;v148.CFrame=CFrame.new(v148.CFrame.Posição,v431);break;end end end break;end if (v375==(1096 -(709 + 387))) then v152.Position=Vector2.new(v148.ViewportSize.X/(1860 -(673 + 1185)) ,v148.ViewportSize.Y/(5 -3) );v152.Visible=true;v375=1;end end else v152.Visible=false;end end);v221.MouseButton1Click:Connect(function() local v353=0 -0 ;while true do if (v353==(0 -0)) then v149= not v149;v221.Text=(v149 and v7("\158\136\187\211\174\132\190\211\168\205\137\219\183\143\167\198","\178\218\237\200")) ou v7("\151\161\239\198\183\167\166\241\191\184\228\223\162","\176\214\213\134") ;v353=1;fim se (v353==(1 + 0)) então se não v149 então v152.Visible=false;fim quebrar;fim fim fim);v197.MouseButton1Click:Connect(function() v160:Destroy();v152:Remove();end);local v235=false;v209.MouseButton1Click:Connect(function() v235= not v235;if v235 then v164.Size=UDim2.new(0 + 0 ,351 -91 ,0 + 0 ,59 -29 );v221.Visible=false;else v164.Size=UDim2.new(0,510 -250 ,1880 -(446 + 1434) ,130);v221.Visible=true;end end);v146.InputBegan:Connect(function(v354) if (v354.UserInputType==Enum.UserInputType.MouseButton2) then v150=true;end fim);v146.InputEnded:Connect(function(v355) if (v355.UserInputType==Enum.UserInputType.MouseButton2) then v150=false;end fim);end});v92:AddButton({[v7("\192\164\162\216\173","\57\148\205\214\180\200\54")]=v7("\51\244\56\56\121\17\246","\22\114\157\85\84"),[v7("\231\202\31\200\95\247\171\207","\200\164\171\115\164\61\150")]=function() local v236=jogo:GetService(v7("\142\248\2\92\134\172\231","\227\222\148\99\37"));local v237=jogo:GetService(v7("\1\71\92\197\252\33\68\91\245\252","\153\83\50\50\150"));local v238=jogo:GetService(v7("\104\101\118\14\90\165\93\72\98\64\25\97\189\68\94\115","\45\61\22\19\124\19\203"));local v239=v236.LocalPlayer;local v240=workspace.CurrentCamera;local v241=false;local v242=80;local v243=Drawing.new(v7("\226\27\31\246\14\117","\217\161\114\109\149\98\16"));v243.Thickness=1285 -(1040 + 243) ;v243.Radius=v242;v243.Color=Color3.fromRGB(102,0 -0 ,153);v243.Filled=false;v243.Transparency=1848 -(559 + 1288) ;v243.Visible=false;v243.Position=Vector2.new(v240.ViewportSize.X/(1933 -(609 + 1322)) ,v240.ViewportSize.Y/(456 -(13 + 441)) );local v251=Instance.new(v7("\33\35\42\121\185\122\53\53\49","\20\114\64\88\28\220"));v251.Name=v7("\31\4\202\161\235\241\180\60\13\221\183\243","\221\81\97\178\212\152\176");v251.Parent=game.CoreGui;local v255=Instance.new(v7("\235\245\28\246\31","\122\173\135\125\155"));v255.Name=v7("\169\192\9\183","\168\228\161\96\217\95\81");v255.Parent=v251;v255.BackgroundColor3=Color3.fromRGB(74 -54 ,20,52 -32 );v255.Position=UDim2.new(0.4,0,0.4 -0 ,0 + 0 );v255.Size=UDim2.new(0,944 -684 ,0,47 + 83 );v255.Active=true;v255.Draggable=true;local v263=Instance.novo(v7("\238\248\13\83\61\89\222\195","\55\187\177\78\60\79"));v263.CornerRadius=UDim.new(0,6 + 6 );v263.Parent=v255;local v266=Instance.new(v7("\11\220\94\230\67","\224\77\174\63\139\38\175"));v266.Name=v7("\176\72\76\34\129\99\89\60","\78\228\33\56");v266.Parent=v255;v266.BackgroundColor3=Color3.fromRGB(118 -78 ,0,44 + 36 );v266.Size=UDim2.new(1,0,0 -0 ,20 + 10 );local v271=Instance.new(v7("\251\87\145\12\151\192\123\160","\229\174\30\210\99"));v271.CornerRadius=UDim.new(0 + 0 ,9 + 3 );v271.Parent=v266;local v274=Instance.new(v7("\47\232\158\69\193\60\59\30\225","\89\123\141\230\49\141\93"));v274.Parent=v266;v274.Size=UDim2.new(1, -60,1 + 0 ,0 + 0 );v274.Position=UDim2.new(433 -(153 + 280) ,10,0 -0 ,0 + 0 );v274.BackgroundTransparency=1 + 0 ;v274.Text=v7("\221\116\238\25\3\10\210\120\251\0\31\73\248","\42\147\17\150\108\112");v274.TextColor3=Color3.fromRGB(153,27 + 23 ,204);v274.Font=Enum.Font.GothamBold;v274.TextSize=17 + 1 ;v274.TextXAlignment=Enum.TextXAlignment.Left;v274.TextYAlignment=Enum.TextYAlignment.Center;local v288=Instance.new(v7("\59\163\53\107\197\253\27\178\34\113","\136\111\198\77\31\135"));v288.Parent=v266;v288.Size=UDim2.new(0 + 0 ,45 -15 ,1,0 + 0 );v288.Position=UDim2.new(668 -(89 + 578) , -(22 + 8),0,0);v288.BackgroundColor3=Color3.fromRGB(60,0,249 -129 );v288.Text="X";v288.Font=Enum.Font.GothamBold;v288.TextSize=1067 -(572 + 477) ;v288.TextColor3=Color3.fromRGB(255,35 + 220 ,154 + 101 );local v297=Instance.new(v7("\55\32\132\89\175\234\18\187","\201\98\105\199\54\221\132\119"));v297.CornerRadius=UDim.new(0,1 + 5 );v297.Parent=v288;local v300=Instance.new(v7("\141\9\155\53\32\32\184\173\3\141","\204\217\108\227\65\98\85"));v300.Parent=v266;v300.Size=UDim2.new(0,116 -(84 + 2) ,1 -0 ,0);v300.Position=UDim2.new(1, -(44 + 16),842 -(497 + 345) ,0);v300.BackgroundColor3=Color3.fromRGB(2 + 58 ,0,21 + 99 );v300.Text="-";v300.Font=Enum.Font.GothamBold;v300.TextSize=22;v300.TextColor3=Color3.fromRGB(1588 -(605 + 728) ,182 + 73 ,566 -311 );local v309=Instance.new(v7("\107\234\214\234\62\206\91\209","\160\62\163\149\133\76"));v309.CornerRadius=UDim.new(0 + 0 ,22 -16 );v309.Parent=v300;local v312=Instance.new(v7("\226\165\21\59\225\195\180\25\32\205","\163\182\192\109\79"));v312.Name=v7("\21\47\13\204\250\55\45\34\213\225\32\41\14","\149\84\70\96\160");v312.Parent=v255;v312.BackgroundColor3=Color3.fromRGB(32 + 3 ,35,96 -61 );v312.Position=UDim2.new(0.1,0 + 0 ,489.5 -(457 + 32) ,0);v312.Size=UDim2.new(0.8,0,0.3 + 0 ,0);v312.Text=v7("\25\18\4\251\57\20\77\204\49\11\1\226\59\13","\141\88\102\109");v312.TextColor3=Color3.new(1403 -(832 + 570) ,1 + 0 ,1 + 0 );v312.Font=Enum.Font.GothamBold;v312.TextSize=18;local v322=Instance.novo(v7("\134\122\233\127\8\51\80\211","\161\211\51\170\16\122\93\53"));v322.CornerRadius=UDim.new(0,42 -30 );v322.Parent=v312;função local v325() local v356=nil;local v357=v242;para v369,v370 em pares(v236:GetPlayers()) faça se ((v370~=v239) e v370.Character e v370.Character:FindFirstChild(v7("\207\161\160\59\244","\72\155\206\210"))) então local v392=0;local v393;local v394;enquanto verdadeiro faça se (v392==(0 + 0)) então v393,v394=v240:WorldToViewportPoint(v370.Character.Torso.Position);se v394 então local v443=796 -(588 + 208) ;local v444;enquanto verdadeiro faça se (v443==0) então v444=(Vector2.new(v393.X,v393.Y) -Vector2.new(v240.ViewportSize.X/2 ,v240.ViewportSize.Y/(5 -3) )).Magnitude;se (v444<v357) então local v458=1800 -(884 + 916) ;enquanto verdadeiro faça se ((0 -0)==v458) então v357=v444;v356=v370;break;end end end break;end end end break;end end end end return v356;end v237.RenderStepped:Connect(function() if v241 then v243.Position=Vector2.new(v240.ViewportSize.X/(2 + 0) ,v240.ViewportSize.Y/(655 -(232 + 421)) );local v383=v325();if (v383 and v383.Character and v383.Character:FindFirstChild(v7("\114\117\70\29\60","\83\38\26\52\110"))) then local v397=v383.Character.Torso.Position;v240.CFrame=CFrame.new(v240.CFrame.Position,v397);end end end);v312.MouseButton1Click:Connect(function() local v358=1889 -(1569 + 320) ;local v359;while true do if (v358==0) then v359=0 + 0 ;while true do if (v359==0) then v241= not v241;v243.Visible=v241;v359=1 + 0 ;end if (v359==1) then v312.Text=(v241 and v7("\124\18\52\71\76\30\49\71\74\87\6\79\85\27\40\69\83","\38\56\119\71")) ou v7("\210\251\81\192\36\68\179\206\81\219\41\89\240\228","\54\147\143\56\182\69") ;break;end end break;end end end);v288.MouseButton1Click:Connect(function() local v360=0 -0 ;local v361;while true do if ((605 -(316 + 289))==v360) then v361=0;while true do if (v361==0) then v251:Destroy();v243:Remove();break;end end break;end end end);local v326=false;v300.MouseButton1Click:Connect(function() local v362=0 -0 ;while true do if (v362==(0 + 0)) then v326= not v326;if v326 then local v408=1453 -(666 + 787) ;while true do if (v408==(425 -(360 + 65))) then v255.Size=UDim2.new(0 + 0 ,514 -(79 + 175) ,0 -0 ,24 + 6 );v312.Visible=false;break;end end else local v409=0;while true do if (v409==0) then v255.Size=UDim2.new(0,796 -536 ,0 -0 ,1029 -(503 + 396) );v312.Visible=true;break;end end end break;end end end);end});v94:AddButton({[v7("\226\136\235\69\218","\191\182\225\159\41")]=v7("\2\28\46\127\158\138\210","\162\75\114\72\53\235\231"),[v7("\175\61\72\238\81\3\143\55","\98\236\92\36\130\51")]=function() local v327=game:GetService(v7("\145\10\9\168\108\166\165\37\176\42\9\168\83\161\182\53","\80\196\121\108\218\37\200\213"));local v328=game:GetService(v7("\48\127\3\102\78\28\153","\234\96\19\98\31\43\110"));local v329=v328.LocalPlayer;local v330=v329.Character or v329.CharacterAdded:Wait() ;local v331=v330:WaitForChild(v7("\46\10\95\198\162\125\130\2","\235\102\127\50\167\204\18"));v327.InputBegan:Connect(function(v363,v364) if v364 then return;end if (v363.KeyCode==Enum.KeyCode.Space) then if (v331 and (v331:GetState()=Enum.HumanoidStateType.Jumping)) então v331:ChangeState(Enum.HumanoidStateType.Jumping); senão se v331 então v331:ChangeState(Enum.HumanoidStateType.Jumping); fim fim fim);fim});v91:AddButton({[v7("\100\168\225\47\65","\78\48\193\149\67\36")]=v7("\2\27\138\23\72\62","\33\80\126\224\120"),[v7("\207\169\15\200\94\237\171\8","\60\140\200\99\164")]=function() local v332=181 -(92 + 89) ;local v333;local v334;enquanto verdadeiro faça se (v332==(0 -0)) então v333=game:GetService(v7("\179\241\8\35\178\136\230\16\21\167\149\226\13\37\167","\194\231\148\100\70"));v334=game:GetService(v7("\118\64\192\186\243\218\85","\168\38\44\161\195\150")).LocalPlayer;v332=1 + 0 ;end if (v332==(1 + 0)) then v333:Teleport(game.PlaceId,v334);break;end end end});else local v96=0;while true do if (v96==(7 -5)) then v15.TextColor3=Color3.fromRGB(35 + 220 ,255,581 -326 );break;end if ((1 + 0)==v96) then v10.wait(1.5 + 0 );v15.Text="";v96=2;end if (0==v96) then v15.Text="❌ Key Inválida!";v15.TextColor3=Color3.fromRGB(255,0 -0 ,0 + 0 );v96=1;end end end end);Texto="❌ Tecla Inválida!";v15.TextColor3=Color3.fromRGB(255,0 -0 ,0 + 0 );v96=1;end end end end);Texto="❌ Tecla Inválida!";v15.TextColor3=Color3.fromRGB(255,0 -0 ,0 + 0 );v96=1;end end end end);
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+-- Limpar GUI antiga
+if player.PlayerGui:FindFirstChild("SintoniaRP_GUI") then
+	player.PlayerGui.SintoniaRP_GUI:Destroy()
+end
+
+--========================
+-- SCREEN GUI
+--========================
+local gui = Instance.new("ScreenGui")
+gui.Name = "SintoniaRP_GUI"
+gui.ResetOnSpawn = false
+gui.Parent = player.PlayerGui
+
+--========================
+-- BOTÃO FLUTUANTE 💸
+--========================
+local toggleBtn = Instance.new("TextButton", gui)
+toggleBtn.Size = UDim2.new(0, 55, 0, 55)
+toggleBtn.Position = UDim2.new(0, 15, 0.5, -27)
+toggleBtn.Text = "💸"
+toggleBtn.Font = Enum.Font.GothamBold
+toggleBtn.TextSize = 24
+toggleBtn.BackgroundColor3 = Color3.fromRGB(20,20,20)
+toggleBtn.TextColor3 = Color3.new(1,1,1)
+Instance.new("UICorner", toggleBtn).CornerRadius = UDim.new(1,0)
+
+--========================
+-- PAINEL PRINCIPAL
+--========================
+local main = Instance.new("Frame", gui)
+main.Size = UDim2.new(0, 560, 0, 340)
+main.Position = UDim2.new(0.5, -280, 0.5, -170)
+main.BackgroundColor3 = Color3.fromRGB(15,15,15)
+main.Visible = false
+Instance.new("UICorner", main).CornerRadius = UDim.new(0,14)
+
+toggleBtn.MouseButton1Click:Connect(function()
+	main.Visible = not main.Visible
+end)
+
+--========================
+-- TÍTULO
+--========================
+local title = Instance.new("TextLabel", main)
+title.Size = UDim2.new(1,0,0,45)
+title.BackgroundTransparency = 1
+title.Text = "SINTONIA RP"
+title.Font = Enum.Font.GothamBold
+title.TextSize = 20
+title.TextColor3 = Color3.new(1,1,1)
+
+--========================
+-- SIDEBAR
+--========================
+local side = Instance.new("Frame", main)
+side.Size = UDim2.new(0,150,1,-45)
+side.Position = UDim2.new(0,0,0,45)
+side.BackgroundColor3 = Color3.fromRGB(20,20,20)
+
+--========================
+-- CONTENT
+--========================
+local content = Instance.new("Frame", main)
+content.Position = UDim2.new(0,150,0,45)
+content.Size = UDim2.new(1,-150,1,-45)
+content.BackgroundTransparency = 1
+
+--========================
+-- PÁGINAS
+--========================
+local pages = {}
+
+local function newPage(name)
+	local p = Instance.new("Frame", content)
+	p.Size = UDim2.new(1,0,1,0)
+	p.BackgroundTransparency = 1
+	p.Visible = false
+	pages[name] = p
+	return p
+end
+
+-- Criar páginas
+local ADMIN   = newPage("ADMIN")
+local SCRITOZ = newPage("SCRITOZ")
+local PLAYER  = newPage("PLAYER")
+local VISUAL  = newPage("VISUAL")
+local MAPA    = newPage("MAPA")
+local EXTRA   = newPage("EXTRA")
+
+ADMIN.Visible = true
+
+--========================
+-- BOTÃO SIDEBAR
+--========================
+local function sideButton(text, page, y)
+	local b = Instance.new("TextButton", side)
+	b.Size = UDim2.new(1,-10,0,36)
+	b.Position = UDim2.new(0,5,0,y)
+	b.Text = text
+	b.Font = Enum.Font.Gotham
+	b.TextSize = 13
+	b.BackgroundColor3 = Color3.fromRGB(30,30,30)
+	b.TextColor3 = Color3.new(1,1,1)
+	Instance.new("UICorner", b)
+
+	b.MouseButton1Click:Connect(function()
+		for _,pg in pairs(pages) do
+			pg.Visible = false
+		end
+		page.Visible = true
+	end)
+end
+
+sideButton("ADMIN", ADMIN, 10)
+sideButton("SCRITOZ", SCRITOZ, 55)
+sideButton("PLAYER", PLAYER, 100)
+sideButton("VISUAL", VISUAL, 145)
+sideButton("MAPA", MAPA, 190)
+sideButton("EXTRA", EXTRA, 235)
+
+--========================
+-- OPÇÕES
+--========================
+local function option(parent, text, y)
+	local b = Instance.new("TextButton", parent)
+	b.Size = UDim2.new(0.9,0,0,36)
+	b.Position = UDim2.new(0.05,0,0,y)
+	b.Text = text
+	b.Font = Enum.Font.Gotham
+	b.TextSize = 14
+	b.BackgroundColor3 = Color3.fromRGB(35,35,35)
+	b.TextColor3 = Color3.new(1,1,1)
+	Instance.new("UICorner", b)
+
+	b.MouseButton1Click:Connect(function()
+		warn(text.." ativado (UI)")
+	end)
+end
+
+-- ADMIN
+option(ADMIN, "Fly (Visual)", 20)
+option(ADMIN, "Speed (Visual)", 65)
+option(ADMIN, "Jump (Visual)", 110)
+
+-- SCRITOZ
+option(SCRITOZ, "Modo RP", 20)
+option(SCRITOZ, "Animações RP", 65)
+
+-- PLAYER
+option(PLAYER, "Reset Personagem", 20)
+option(PLAYER, "Sentar RP", 65)
+
+-- VISUAL
+option(VISUAL, "Full Bright", 20)
+option(VISUAL, "Remover Névoa", 65)
+
+-- MAPA
+option(MAPA, "Teleport Praça", 20)
+option(MAPA, "Teleport Hospital", 65)
+
+-- EXTRA
+option(EXTRA, "Ocultar Painel (Stream)", 20)
+option(EXTRA, "Anti Kick (Visual)", 65)
+
+--========================
+-- SISTEMA DE KEY
+--========================
+local KEY = "key321789"
+
+local keyGui = Instance.new("ScreenGui", player.PlayerGui)
+keyGui.Name = "KeySystem"
+
+local keyFrame = Instance.new("Frame", keyGui)
+keyFrame.Size = UDim2.new(0,300,0,160)
+keyFrame.Position = UDim2.new(0.5,-150,0.5,-80)
+keyFrame.BackgroundColor3 = Color3.fromRGB(20,20,20)
+Instance.new("UICorner", keyFrame)
+
+local keyTitle = Instance.new("TextLabel", keyFrame)
+keyTitle.Size = UDim2.new(1,0,0,40)
+keyTitle.BackgroundTransparency = 1
+keyTitle.Text = "SINTONIA RP - KEY"
+keyTitle.TextColor3 = Color3.new(1,1,1)
+keyTitle.Font = Enum.Font.GothamBold
+keyTitle.TextSize = 16
+
+local keyBox = Instance.new("TextBox", keyFrame)
+keyBox.Size = UDim2.new(0.9,0,0,35)
+keyBox.Position = UDim2.new(0.05,0,0,55)
+keyBox.PlaceholderText = "Digite a key"
+keyBox.Text = ""
+keyBox.BackgroundColor3 = Color3.fromRGB(35,35,35)
+keyBox.TextColor3 = Color3.new(1,1,1)
+Instance.new("UICorner", keyBox)
+
+local keyBtn = Instance.new("TextButton", keyFrame)
+keyBtn.Size = UDim2.new(0.9,0,0,35)
+keyBtn.Position = UDim2.new(0.05,0,0,100)
+keyBtn.Text = "CONFIRMAR"
+keyBtn.BackgroundColor3 = Color3.fromRGB(40,40,40)
+keyBtn.TextColor3 = Color3.new(1,1,1)
+Instance.new("UICorner", keyBtn)
+
+keyBtn.MouseButton1Click:Connect(function()
+	if keyBox.Text == KEY then
+		keyGui:Destroy()
+		main.Visible = true
+
+		-- Auto fechar após 1 minuto
+		task.delay(60, function()
+			if gui then
+				gui:Destroy()
+			end
+		end)
+	else
+		keyTitle.Text = "KEY INCORRETA"
+	end
+end)
